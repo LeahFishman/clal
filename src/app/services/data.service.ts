@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Department } from '../models/Department';
+import { Department } from '../models/department';
 import { _Task } from '../models/task';
 
 @Injectable({
@@ -31,7 +31,9 @@ export class DataService {
   getTasksByDepartment(departmentId: number) {
     return this.http.get('assets/data.json')
       .pipe(
-        map((res: any) => res.tasks.filter((t: any) => t.DepartmentID === departmentId))
+        map((res: any) => res.tasks.filter((t: any) => t.DepartmentID === departmentId)
+        .map((t:_Task)=>{return {DatePast:new Date(t.DueDate)<this.date,...t}})
+        )
       )
   }
   getTasksByEmployee(employeeName: string) {

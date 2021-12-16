@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {  Component, Input, OnInit } from '@angular/core';
 import { _Task } from 'src/app/models/task';
 
 @Component({
@@ -9,8 +9,6 @@ import { _Task } from 'src/app/models/task';
 export class TableComponent implements OnInit {
   @Input()
   tasks: _Task[] = [];
-  @Input()
-  label: string = "";
   cols: any[] = [];
   rows: number[] = [];
   height: string;
