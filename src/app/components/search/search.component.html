@@ -1,0 +1,15 @@
+<p-dropdown [options]="employees" (onChange)="onChange()" [(ngModel)]="selectedEmployee" optionLabel="EmployeeName" [showClear]="true" placeholder="Select an Employee">
+    <ng-template pTemplate="selectedItem">
+        <div class="employee-item employee-item-value"  *ngIf="selectedEmployee">
+            <img src="assets/showcase/images/demo/flag/flag_placeholder.png"  />
+            <div>{{selectedEmployee.EmployeeName}}</div>
+        </div>
+    </ng-template>
+    <ng-template let-employee pTemplate="item">
+        <div class="employee-item">
+            <img src="assets/showcase/images/demo/flag/flag_placeholder.png" />
+            <div>{{employee.EmployeeName}}</div>
+        </div>
+    </ng-template> 
+</p-dropdown>
+

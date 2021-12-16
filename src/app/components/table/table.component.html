@@ -1,0 +1,28 @@
+
+    <p-table [columns]="cols"  [value]="tasks" [scrollable]="true" [scrollHeight]="height" 
+    [paginator]="true" [rows]="10" [rowsPerPageOptions]="rows" [showCurrentPageReport]="true">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr style="height:40px" [ngClass]="{'warning': rowData.DatePast}">
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody" let-columns="columns">
+        <tr style="height:40px">
+            <td *ngFor="let col of columns">
+                <div class="loading-text"></div>
+                <p-skeleton [ngStyle]="{'width': '100%'}"></p-skeleton>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
